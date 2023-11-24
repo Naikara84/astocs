@@ -38,7 +38,7 @@ const Dashboard = () => {
                   to="/dashboard"
                   className="nav-link text-white px-0 align-middle"
                 >
-                  <i className="fs-4 bi-speedometer2 ms-2"></i>
+                  <i className="fs-4 bi bi-clipboard-data ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">Dashboard</span>
                 </Link>
               </li>
@@ -47,7 +47,7 @@ const Dashboard = () => {
                   to="/dashboard/employee"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi-people ms-2"></i>
+                  <i className="fs-4 bi bi-person-fill-gear ms-2"></i>
                   <span className="ms-2 d-none d-sm-inline">
                     Manage Employees
                   </span>
