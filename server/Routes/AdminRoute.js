@@ -27,4 +27,12 @@ router.post('/add_category', (req,res)=>{
     })
 
 })
+
+router.get('/category', (req, res) => {
+    const sql = "SELECT * FROM category";
+    con.query(sql, (err, result) => {
+        if(err) return res.json({Status: false, Error: "Query Error"})
+        return res.json({Status: true, Result: result})
+    })
+})
 export { router as adminRouter }
