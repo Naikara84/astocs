@@ -1,7 +1,10 @@
 import express from 'express'
+import bcrypt from 'bcrypt'
 import con from '../utils/db.js'
-const router = express.Router()
 import jwt from 'jsonwebtoken'
+
+const router = express.Router()
+
 router.post('/adminlogin', (req, res) => {
    
     const sql = "SELECT * from employees where email =? and password = ?"
@@ -19,20 +22,44 @@ router.post('/adminlogin', (req, res) => {
     })
 })
 
-router.post('/add_category', (req,res)=>{
-    const sql = "INSERT INTO category (`name`) VALUES (?)"
-    con.query(sql, [req.body.category], (err, result) => {
+router.post('/add_department', (req,res)=>{
+    console.log('Response:',req.body)
+    const sql = "INSERT INTO department (`department`) VALUES (?)"
+    con.query(sql, [req.body.department], (err, result) => {
         if(err) return res.json({Status: false, Error: "Query Error"})
         return res.json({Status: true})
     })
 
 })
 
-router.get('/category', (req, res) => {
-    const sql = "SELECT * FROM category";
+router.get('/department', (req, res) => {
+    const sql = "SELECT * FROM department";
     con.query(sql, (err, result) => {
         if(err) return res.json({Status: false, Error: "Query Error"})
         return res.json({Status: true, Result: result})
     })
 })
+
+
+router.post('/add_employee', (req, res) => {
+   console.log('Response:',req.body)
+    const sql = `INSERT INTO employee
+    (firstName,lastName,userName,password,department_id) 
+    VALUES (?)`
+    bcrypt.hash(req.body.password, 10, (err, hash) => {
+        if(err) return res.json({Status: false, Error: "Query Error"})
+        const values = [
+            req.body.fname,
+            req.body.lname,
+            req.body.username,
+            hash,
+            req.body.department_id
+        ]
+        con.query(sql, [values], (err, result) => {
+            if(err) return res.json({Status: false, Error: err})
+            return res.json({Status: true})
+        })
+    })
+})
+
 export { router as adminRouter }

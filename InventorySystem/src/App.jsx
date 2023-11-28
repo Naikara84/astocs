@@ -5,9 +5,9 @@ import Login from './components/Login'
 import { BrowserRouter,Routes, Route } from 'react-router-dom'
 import Dashboard from './components/Dashboard'
 import Employee from './components/Employee'
-import Category from './components/Category'
+import Department from './components/Department'
 import Profile from './components/Profile'
-import AddCategory from './components/AddCategory'
+import AddDepartment from './components/AddDepartment'
 import AddEmployee from './components/AddEmployee'
 
 function App() {
@@ -18,9 +18,9 @@ function App() {
     <Route path='/adminlogin' element={<Login />}></Route>
     <Route path='/dashboard' element={<Dashboard />}>
       <Route path='/dashboard/employee' element={<Employee />}></Route>
-      <Route path='/dashboard/category' element={<Category />}></Route>
+      <Route path='/dashboard/department' element={<Department />}></Route>
       <Route path='/dashboard/profile' element={<Profile />}></Route>
-      <Route path='/dashboard/add_category' element={<AddCategory />}></Route>
+      <Route path='/dashboard/add_department' element={<AddDepartment />}></Route>
       <Route path='/dashboard/add_employee' element={<AddEmployee />}></Route>
       
     </Route>
