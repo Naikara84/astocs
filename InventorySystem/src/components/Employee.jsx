@@ -49,12 +49,12 @@ const Employee = () => {
           <tbody>
             {employee.map((e) => (
               <tr>
-                <td>{e.fname}</td>
-                <td>{e.lname}</td>
-                <td>{e.username}</td>
+                <td>{e.firstName}</td>
+                <td>{e.lastName}</td>
+                <td>{e.userName}</td>
                 <td>
                   <Link
-                    to={`/dashboard/edit_employee/` + e.id}
+                    to={`/dashboard/edit_employee/`+ e.id}
                     className="btn btn-info btn-sm me-2"
                   >
                     Edit
